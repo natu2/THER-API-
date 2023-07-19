@@ -6,17 +6,22 @@ const MenuBar = ({ navigation }) => {
     <View style={styles.container}>
       <TouchableOpacity
         style={styles.menuItem}
-        onPress={() => navigation.navigate("Screen1")}
+        onPress={() => navigation.navigate("Journals.js")}
       >
-        <Text>Screen 1</Text>
+        <Text>Journals</Text>
       </TouchableOpacity>
       <TouchableOpacity
         style={styles.menuItem}
-        onPress={() => navigation.navigate("Screen2")}
+        onPress={() => navigation.navigate("Goals.js")}
       >
-        <Text>Screen 2</Text>
+        <Text>Goals</Text>
       </TouchableOpacity>
-      {/* Add more menu items as needed */}
+      <TouchableOpacity
+        style={styles.menuItem}
+        onPress={() => navigation.navigate("Explore.js")}
+      >
+        <Text>Explore</Text>
+      </TouchableOpacity>
     </View>
   );
 };
