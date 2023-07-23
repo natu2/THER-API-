@@ -1,21 +1,25 @@
-//import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from "react-native";
-
+//React & Other Libary Imports
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer } from "@react-navigation/native";
 
+//Styles, Icons, Illustrations
+import styles from "./styles";
+
+//Project File Imports
 import MenuBar from "./MenuBar";
-import Goals from "./screens/Goals"; // Need to create
-import Journals from "./screens/Journals"; //Need to create
-import Explore from "./screens/Explore"; //Need to create
+import Goals from "./screens/Goals";
+import Journals from "./screens/Journals";
+import Explore from "./screens/Explore";
+import Home from "./screens/Home";
 
 const Tab = createBottomTabNavigator();
 
 export default function App() {
   return (
-    <NavigationContainer>
+    <NavigationContainer style={styles.container}>
       <Tab.Navigator tabBar={(props) => <MenuBar {...props} />}>
+        <Tab.Screen name="Home" component={Home} />
         <Tab.Screen name="Goals" component={Goals} />
         <Tab.Screen name="Journals" component={Journals} />
         <Tab.Screen name="Explore" component={Explore} />
@@ -23,22 +27,4 @@ export default function App() {
       </Tab.Navigator>
     </NavigationContainer>
   );
-  /**return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-      <>
-      </>
-    </View>
-    
-  );*/
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
