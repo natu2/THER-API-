@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "@tamagui/progress": "^1.46.2",
+    "tamagui": "^1.46.2"
+  }
+}
