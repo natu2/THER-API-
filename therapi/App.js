@@ -24,7 +24,7 @@ export default function App() {
         <Tab.Screen name="Goals" component={Goals} />
         <Tab.Screen name="Journals" component={Journals} />
         <Tab.Screen name="Explore" component={Explore} />
-        // {/* Add more screens as needed */}
+        {/* Add more screens as needed */}
       </Tab.Navigator>
     </NavigationContainer>
   );
