@@ -6,9 +6,9 @@
 //React & Other Libary Imports
 import React from "react";
 import { View, Text } from "react-native";
-import 
+import { ProgressCircle } from "react-native-progress";
 
-const ProgressTracker = ({ progress }) => {
+export default function ProgressTracker({ progress }) {
   return (
     <View style={{ alignItems: "center" }}>
       <ProgressCircle
@@ -22,6 +22,4 @@ const ProgressTracker = ({ progress }) => {
       <Text style={{ marginTop: 10 }}>{`${Math.round(progress * 100)}%`}</Text>
     </View>
   );
-};
-
-export default ProgressTracker;
+}
