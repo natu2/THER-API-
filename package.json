@@ -1,7 +1,0 @@
-{
-  "dependencies": {
-    "@tamagui/progress": "^1.46.2",
-    "react-native-progress": "^5.0.0",
-    "tamagui": "^1.46.2"
-  }
-}
