@@ -19,29 +19,30 @@ export default function Goals() {
   const progress2 = 86;
   const progress3 = 100;
   const [createGoal, setCreateGoal] = useState(false);
-  const [maxGoals, setMaxGoal] = useState(false);
-  const [numGoals, updateNumGoals] = useState(1);
+  const [goalList, setGoalList] = useState([]);
 
   function addGoal() {
-    if (numGoals <= 3) {
-      setCreateGoal(true);
-      updateNumGoals(numGoals + 1);
-    } else {
-      setMaxGoal(true);
-    }
+    setCreateGoal(true);
   }
+
   //TODO: Better back method from AddNewGoals page
   return (
     <View>
       {createGoal ? (
-        <AddNewGoal />
+        <AddNewGoal
+          onDone={() => setCreateGoal(false)}
+          onSubmit={(newGoal) => {
+            setGoalList([...goalList, newGoal]); //copy og array and put in newGoal at the end
+            setCreateGoal(false);
+          }}
+        />
       ) : (
         <View>
           <ProgressTracker progress={progress1} />
           <ProgressTracker progress={progress2} />
           <ProgressTracker progress={progress3} />
           <Button style={styles.button} title="New Goal" onPress={addGoal} />
-          <Text> Number of Goals = {numGoals}</Text>
+          <Text> Number of Goals = {goalList.length}</Text>
         </View>
       )}
     </View>

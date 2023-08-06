@@ -10,55 +10,56 @@ import { Picker } from "@react-native-picker/picker";
 
 //Styles, Icons, Illustrations
 import styles from "../styles"; // how to use style, in the <> of a component: style = styles.______ depending on what the container is
-import Goals from "./Goals";
 import goalsData from "./GoalData";
 
 //Project File Imports
 /*PASTE FILE IMPORTS HERE*/
 
-export default function AddNewGoal() {
+export default function AddNewGoal({ onDone, onSubmit }) {
   //State
-  const [finish, setFinish] = useState(false);
 
   //Options
   const colorOptions = ["Red", "Green", "Blue"];
   const durationOptions = ["1 Month", "2 Weeks", "1 Week"];
   const freqOptions = ["Every Month", "Every Day", "3 Times a Week"];
 
-  //Data
-  const [goal_name, setGoalName] = useState("");
-  const [goal_color, setGoalColor] = useState("");
-  const [goal_duration, setGoalDuration] = useState("");
-  const [goal_freq, setGoalFreq] = useState("");
+  //Data- Hooks
+  const [goalName, setGoalName] = useState("");
+  const [goalColor, setGoalColor] = useState("");
+  const [goalDuration, setGoalDuration] = useState("");
+  const [goalFreq, setGoalFreq] = useState("");
 
   function handleBackButton() {
-    setFinish(true);
+    onDone();
   }
 
   function handleCreateButton() {
     const newGoal = {
-      goal_color,
-      goal_duration,
-      goal_freq,
+      goalPogress: 0,
+      goalName,
+      goalColor,
+      goalDuration,
+      goalFreq,
     };
-
     //TODO: Add conditional, only 3 goals
-    goalsData.push(newGoal);
+    onSubmit(newGoal);
   }
 
   return (
     <View>
-      {finish ? (
-        <Goals />
-      ) : (
+      {
         <View>
           <Button title="Back" onPress={handleBackButton}></Button>
           <Text>Create Goal</Text>
           <Text> Name </Text>
-          <TextInput placeholder="Ex: Walk More"></TextInput>
+          <TextInput
+            placeholder="Ex: Walk More"
+            value={goalName}
+            onChangeText={(value) => setGoalName(value)}
+          ></TextInput>
           <Text> Color </Text>
           <Picker
-            selectedValue={goal_color}
+            selectedValue={goalColor}
             onValueChange={(itemValue) => setGoalColor(itemValue)}
           >
             <Picker.Item
@@ -79,7 +80,7 @@ export default function AddNewGoal() {
           </Picker>
           <Text> Duration of Goal </Text>
           <Picker
-            selectedValue={goal_duration}
+            selectedValue={goalDuration}
             onValueChange={(itemValue) => setGoalDuration(itemValue)}
           >
             <Picker.Item label={durationOptions[0]} value={30} />
@@ -88,7 +89,7 @@ export default function AddNewGoal() {
           </Picker>
           <Text> Frequency of Goal </Text>
           <Picker
-            selectedValue={goal_freq}
+            selectedValue={goalFreq}
             onValueChange={(itemValue) => setGoalFreq(itemValue)}
           >
             <Picker.Item label={freqOptions[0]} value={freqOptions[0]} />
@@ -98,7 +99,7 @@ export default function AddNewGoal() {
 
           <Button title="Create Goal" onPress={handleCreateButton}></Button>
         </View>
-      )}
+      }
     </View>
   );
 }
