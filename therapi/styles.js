@@ -11,6 +11,16 @@ const styles = StyleSheet.create({
   menuItem: {
     paddingHorizontal: 15,
   },
+
+  tracker: {
+    color: "#00a8ff",
+    unfilledColor: "#f2f2f2",
+  },
+
+  button: {
+    color: "#00a8ff",
+    unfilledColor: "#f2f2f2",
+  },
 });
 
 export default styles;

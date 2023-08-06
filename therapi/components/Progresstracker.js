@@ -6,20 +6,24 @@
 //React & Other Libary Imports
 import React from "react";
 import { View, Text } from "react-native";
-import { Circle as ProgressCircle } from "react-native-progress";
+import { Circle } from "react-native-progress";
+import styles from "../styles";
+
+//File & Styling Imports
 
 export default function ProgressTracker({ progress }) {
   return (
-    <View style={{ alignItems: "center" }}>
-      <ProgressCircle
+    <View>
+      <Circle
+        animated
         size={100}
         progress={progress}
-        showsText
+        endAngle={progress}
         thickness={8}
-        color="#00a8ff"
-        unfilledColor="#f2f2f2"
+        unfilledColor="#FF0000"
+        fill="#F9F9F9"
       />
-      <Text style={{ marginTop: 10 }}>{`${Math.round(progress * 100)}%`}</Text>
+      <Text style={{ marginTop: 10 }}>{`${Math.round(progress)}%`}</Text>
     </View>
   );
 }
