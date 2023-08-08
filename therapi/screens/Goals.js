@@ -10,19 +10,32 @@ import { View, Text, Button } from "react-native";
 import styles from "../styles"; // how to use style, in the <> of a component: style = styles.______ depending on what the container is
 import ProgressTracker from "../components/Progresstracker";
 import AddNewGoal from "./AddNewGoal";
-import goalsData from "./GoalData";
 
 //Global Vars
 
 export default function Goals() {
-  const progress1 = 75;
-  const progress2 = 86;
-  const progress3 = 100;
+  //For Progress Trackers
+  const [progress1, setProgress1] = useState(0);
+  const [progress2, setProgress2] = useState(0);
+  const [progress3, setProgress3] = useState(0);
+
   const [createGoal, setCreateGoal] = useState(false);
   const [goalList, setGoalList] = useState([]);
 
   function addGoal() {
     setCreateGoal(true);
+  }
+
+  function updateProgress1() {
+    setProgress1((prevProgress) => prevProgress + 10);
+  }
+
+  function updateProgress2() {
+    setProgress2((prevProgress) => prevProgress + 10);
+  }
+
+  function updateProgress3() {
+    setProgress3((prevProgress) => prevProgress + 10);
   }
 
   //TODO: Better back method from AddNewGoals page
@@ -37,12 +50,26 @@ export default function Goals() {
           }}
         />
       ) : (
-        <View>
-          <ProgressTracker progress={progress1} />
-          <ProgressTracker progress={progress2} />
-          <ProgressTracker progress={progress3} />
+        <View style={styles.tracker}>
+          <ProgressTracker
+            progress={progress1 / 100}
+            onYes={updateProgress1}
+            goalName=""
+          />
+          <ProgressTracker
+            progress={progress2 / 100}
+            onYes={updateProgress2}
+            goalName=""
+          />
+          <ProgressTracker
+            progress={progress3 / 100}
+            onYes={updateProgress2}
+            goalName=""
+          />
           <Button style={styles.button} title="New Goal" onPress={addGoal} />
-          <Text> Number of Goals = {goalList.length}</Text>
+          <Text> Did you do?</Text>
+          <Text> Goal Name = {goalList[0]?.goalName || " "}</Text>
+          <Text> Goal Lenght = {goalList.length}</Text>
         </View>
       )}
     </View>

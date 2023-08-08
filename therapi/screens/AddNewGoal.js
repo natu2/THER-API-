@@ -10,7 +10,6 @@ import { Picker } from "@react-native-picker/picker";
 
 //Styles, Icons, Illustrations
 import styles from "../styles"; // how to use style, in the <> of a component: style = styles.______ depending on what the container is
-import goalsData from "./GoalData";
 
 //Project File Imports
 /*PASTE FILE IMPORTS HERE*/
@@ -36,12 +35,11 @@ export default function AddNewGoal({ onDone, onSubmit }) {
   function handleCreateButton() {
     const newGoal = {
       goalPogress: 0,
-      goalName,
-      goalColor,
-      goalDuration,
-      goalFreq,
+      goalName: this.goalName,
+      goalColor: this.goalColor,
+      goalDuration: this.goalDuration,
+      goalFreq: this.goalFreq,
     };
-    //TODO: Add conditional, only 3 goals
     onSubmit(newGoal);
   }
 

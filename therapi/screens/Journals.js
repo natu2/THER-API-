@@ -1,6 +1,7 @@
 //React & Other Libary Imports
 import React from "react";
 import { View } from "react-native";
+import { NavigationContainer } from "@react-navigation/native";
 
 //Styles, Icons, Illustrations
 import styles from "../styles"; // how to use style, in the <> of a component: style = styles.______ depending on what the container is
